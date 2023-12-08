@@ -1,11 +1,15 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 import * as CallbackModule from 'callback-module';
 
 export default function App() {
+  const callback = () => console.log('CALLBACK')
+  const onPress = () => CallbackModule.sendCallback(callback)
   return (
     <View style={styles.container}>
-      <Text>{CallbackModule.hello()}</Text>
+      <TouchableOpacity onPress={onPress}>
+        <Text>{CallbackModule.hello()}</Text>
+      </TouchableOpacity>
     </View>
   );
 }

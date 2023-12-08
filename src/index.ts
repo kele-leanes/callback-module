@@ -17,6 +17,10 @@ export async function setValueAsync(value: string) {
   return await CallbackModule.setValueAsync(value);
 }
 
+export async function sendCallback(fn:() => void) {
+  return await CallbackModule.sendCallback(fn);
+}
+
 const emitter = new EventEmitter(CallbackModule ?? NativeModulesProxy.CallbackModule);
 
 export function addChangeListener(listener: (event: ChangeEventPayload) => void): Subscription {

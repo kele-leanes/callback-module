@@ -1,5 +1,7 @@
 package expo.modules.callbackmodule
 
+import expo.modules.kotlin.jni.JavaScriptFunction
+import expo.modules.kotlin.jni.JavaScriptValue
 import expo.modules.kotlin.modules.Module
 import expo.modules.kotlin.modules.ModuleDefinition
 
@@ -24,6 +26,10 @@ class CallbackModule : Module() {
     // Defines a JavaScript synchronous function that runs the native code on the JavaScript thread.
     Function("hello") {
       "Hello world! 👋"
+    }
+
+    Function("sendCallback") { callback: JavaScriptFunction<JavaScriptValue>? ->
+      callback?.invoke()
     }
 
     // Defines a JavaScript function that always returns a Promise and whose native code

@@ -23,6 +23,10 @@ public class CallbackModule: Module {
       return "Hello world! 👋"
     }
 
+    Function("sendCallback") { (callback: JavaScriptFunction<JavaScriptValue>?) in
+        try callback?.call()
+    }
+
     // Defines a JavaScript function that always returns a Promise and whose native code
     // is by default dispatched on the different thread than the JavaScript runtime runs on.
     AsyncFunction("setValueAsync") { (value: String) in
